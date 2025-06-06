@@ -24,6 +24,7 @@ class Solution(object):
                 #if not exist, not anagram
                 return False
 
+        # If dictionary is empty, they are anagrams
         return len(d) == 0
 
 
