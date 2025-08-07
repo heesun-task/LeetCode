@@ -13,14 +13,14 @@
 var invertTree = function(root) {
     if (root === null) return null;
 
-    const temp = root.left;
-    root.left = root.right;
-    root.right = temp;
+    // exchange the left and right node 
+    let temp = root.right;
+    root.right = root.left;
+    root.left = temp;
 
+    // do exchange in both left and right subtrees
     invertTree(root.left);
     invertTree(root.right);
-
+    
     return root;
-
-
 };
