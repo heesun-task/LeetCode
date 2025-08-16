@@ -33,11 +33,8 @@ var averageOfLevels = function(root) {
             if(currNode.right) nextQueue.push(currNode.right);
         }
 
-        // avg = divide sum by level Size
-        const avg = sum / lvSize;
-
         // push avg to avgs
-        avgs.push(avg);
+        avgs.push(sum / lvSize);
 
         queue = nextQueue;
     }
