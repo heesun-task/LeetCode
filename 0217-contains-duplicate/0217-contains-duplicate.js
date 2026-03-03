@@ -20,7 +20,7 @@ var containsDuplicate = function(nums) {
 
     for(const num of nums) {
         if (seen.has(num)) return true;
-        else seen.add(num);
+        seen.add(num);
     }
     return false; 
 };
