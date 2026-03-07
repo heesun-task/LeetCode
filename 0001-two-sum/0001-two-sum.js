@@ -1,30 +1,33 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
+/*
+    Goal: return indices of the two numbers such that they add up to target
+
+    Plan:
+    - create a hash map (dict) to store number -> index
+    - loop through nums with index i
+        - get currentNum = nums[i]
+        - compute pairNum = target - currentNum
+        - if pairNum exists in dict
+            -> return [dict[pairNum], i]
+        - otherwise store currentNum in dict with its index
+    - if no pair is found, return [-1, -1]
+
+    space complexity: O(n)
+    time complexity: O(n)
+*/
+
 var twoSum = function(nums, target) {
-    // initialize a map
-    const dict = new Map();
+    const dict = {};
 
-    // in a loop for i in nums,
-    for (let i = 0; i < nums.length; i++){
-        // for current value nums[i]
-        let currVal = nums[i]
-        // pair is target - currVal
-        let pair = target - currVal;
+    for (let i = 0; i < nums.length; i++) {
+        const currentNum = nums[i];
+        const pairNum = target - currentNum;
 
-        // if pair existis in dictionary as a key
-        if (dict.has(pair)) {
-            // return value (index) of pair and i (current idx)
-            return [dict.get(pair), i];
-        }
-        else {
-            // add key:currVal, value: i (idx) pair to dictionary
-            dict.set(currVal, i);
+        if (typeof dict[pairNum] === 'number') {
+            return [dict[pairNum], i];
+        } else {
+            dict[currentNum] = i;
         }
     }
 
-    // always exactly one solution, so just return [-1,-1] to handle any error case
     return [-1, -1];
 };
