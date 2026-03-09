@@ -1,6 +1,6 @@
-# Time Complexity: O(n)
-# Space Complexity: O(1)
 class Solution:
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def isPalindrome(self, s: str) -> bool:
         # Use two pointers from both ends
         left, right = 0, len(s) - 1
@@ -17,3 +17,9 @@ class Solution:
             left += 1
             right -= 1
         return True
+
+    def isPalindrome2(self, s:str) -> bool:
+        # Keep only alphanumeric characters from the lowercased string (Normalize string)
+        s = list(filter(str.isalnum, s.lower()))
+        # Check if the list is the same forwards and backwards 
+        return s == s[::-1]
